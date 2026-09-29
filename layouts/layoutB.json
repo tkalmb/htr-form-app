@@ -1,0 +1,219 @@
+{
+  "layout": "B",
+  "coordinate_space": "absolute",
+  "reference_size": null,
+  "_comment": [
+    "Field ROIs for layout B, carried over from pipeline_htr.ipynb.",
+    "See layoutA.json for the full explanation of the schema."
+  ],
+  "fields": [
+    {
+      "name": "last_name",
+      "type": "text",
+      "roi": [
+        667,
+        612,
+        1152,
+        711
+      ],
+      "postprocess": "name",
+      "note": "No lexicon: an incomplete name list corrects valid names into other valid names.",
+      "label": "Name"
+    },
+    {
+      "name": "first_name",
+      "type": "text",
+      "roi": [
+        1461,
+        609,
+        2183,
+        708
+      ],
+      "postprocess": "name",
+      "label": "Vorname"
+    },
+    {
+      "name": "monthly_salary",
+      "type": "number",
+      "roi": [
+        992,
+        697,
+        2181,
+        794
+      ],
+      "postprocess": "numeric",
+      "pattern": "^\\d+([.,]\\d+)?\\s?€?$",
+      "label": [
+        "Monatliches Einkommen",
+        "Einkommen"
+      ]
+    },
+    {
+      "name": "birthday",
+      "type": "number",
+      "roi": [
+        987,
+        785,
+        2181,
+        879
+      ],
+      "postprocess": "date",
+      "note": "Handles numeric and spelled-out-month forms; validates against a real calendar.",
+      "label": "Geburtsdatum"
+    },
+    {
+      "name": "email",
+      "type": "text",
+      "roi": [
+        995,
+        874,
+        2172,
+        967
+      ],
+      "postprocess": "email",
+      "note": "Only the domain is corrected; the local part has nothing to cross-check against.",
+      "label": [
+        "E-Mail-Adresse",
+        "E-Mail",
+        "EMail-Adresse"
+      ]
+    },
+    {
+      "name": "phone",
+      "type": "number",
+      "roi": [
+        990,
+        959,
+        2175,
+        1053
+      ],
+      "postprocess": "numeric",
+      "pattern": "^[\\d\\s()+\\-/]+$",
+      "label": "Telefonnummer"
+    },
+    {
+      "name": "studies",
+      "type": "checkbox_group",
+      "roi": [
+        1139,
+        1045,
+        2181,
+        1226
+      ],
+      "options": {
+        "IM": [
+          0.011433,
+          0.526369,
+          0.305718,
+          0.945801
+        ],
+        "BWL": [
+          0.517147,
+          0.518145,
+          0.760004,
+          0.945801
+        ],
+        "WIN": [
+          0.321433,
+          0.526369,
+          0.505718,
+          0.937577
+        ],
+        "Kunst": [
+          0.771433,
+          0.518145,
+          0.98429,
+          0.937577
+        ]
+      },
+      "note": "Option boxes are fractions of the studies crop, measured with the DRAW_CHECKBOX_OPTIONS step. Argmax over siblings, so exactly one marked option is assumed.",
+      "label": "Studiengang"
+    },
+    {
+      "name": "street",
+      "type": "text",
+      "roi": [
+        493,
+        1221,
+        1144,
+        1312
+      ],
+      "postprocess": "street_suffix",
+      "note": "Only the trailing street-type word is corrected; the base name is left alone.",
+      "label": "Straße"
+    },
+    {
+      "name": "house_number",
+      "type": "number",
+      "roi": [
+        1662,
+        1215,
+        2178,
+        1312
+      ],
+      "postprocess": "numeric",
+      "pattern": "^\\d+[a-zA-Z]?$",
+      "label": "Hausnummer"
+    },
+    {
+      "name": "postal_code",
+      "type": "number",
+      "roi": [
+        488,
+        1304,
+        1144,
+        1400
+      ],
+      "postprocess": "numeric",
+      "pattern": "^\\d{5}$",
+      "label": [
+        "PLZ",
+        "Postleitzahl"
+      ]
+    },
+    {
+      "name": "city",
+      "type": "text",
+      "roi": [
+        1285,
+        1304,
+        2178,
+        1397
+      ],
+      "postprocess": "lexicon",
+      "lexicon": "german_cities",
+      "note": "External list from Wikipedia (List of cities and towns in Germany), not derived from any data split.",
+      "label": "Ort"
+    },
+    {
+      "name": "comment",
+      "type": "long_text",
+      "roi": [
+        670,
+        1395,
+        2175,
+        1789
+      ],
+      "postprocess": "none",
+      "note": "Multi-line: split into lines before recognition, merged after. The guarded LLM corrector exists as rule 'llm' but is off by default; select it in the field table to enable it.",
+      "label": "Kommentar"
+    },
+    {
+      "name": "signature",
+      "type": "ignore",
+      "roi": [
+        276,
+        1784,
+        2179,
+        1939
+      ],
+      "note": "Cropped for inspection only; never recognized or scored.",
+      "label": "Unterschrift"
+    }
+  ],
+  "stop_labels": [
+    "Allgemeines Formular zur Datenerfassung",
+    "bitte ankreuzen",
+    "Anschrift"
+  ]
+}

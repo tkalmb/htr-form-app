@@ -1,0 +1,35 @@
+# htr-form-app configuration -- PATHS AND MODEL IDS ONLY.
+#
+# Pipeline settings (preprocessing, decoding, thresholds) are deliberately
+# NOT configurable here: they live in the preset definitions and the lifted
+# engine modules, matching the thesis-evaluated values. If you need a
+# different pipeline setting, that is a code change with a manifest trail,
+# not a config edit.
+
+# Fine-tuned TrOCR checkpoint (directory). Adjust to where the checkpoint
+# lives on your machine -- it is not part of this repository.
+trocr_model_path: "tkalmb/trocr-HGAF"
+
+# Hugging Face ids (or local paths) for the zero-shot models.
+qwen_model_path: "Qwen/Qwen3-VL-8B-Instruct"
+chandra_model_path: "datalab-to/chandra-ocr-2"
+
+# Local LLM used by the `llm` post-processing rule for the comment field.
+comment_llm_path: "Qwen/Qwen3-4B-Instruct-2507"
+
+# Post-processing resources.
+# Every .csv/.txt file in this directory becomes a lexicon named after the
+# file (german_cities.csv -> lexicon "german_cities"). Edit or add files to
+# change what the 'lexicon' rule corrects against; no code changes needed.
+lexicons_dir: "resources/lexicons"
+
+# The other two correction lists, also plain files the user can edit:
+# email domains for the `email` rule, street-type words for `street_suffix`.
+email_domains_file: "resources/email_domains.txt"
+street_suffixes_file: "resources/street_suffixes.txt"
+
+# Where runs are written (one subfolder per run, named by the run manifest).
+output_dir: "app_runs"
+
+# Where the built-in layout files live (relative to the repository root).
+layouts_dir: "layouts"

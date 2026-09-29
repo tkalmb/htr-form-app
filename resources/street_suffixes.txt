@@ -1,0 +1,19 @@
+# Street-type words the `street_suffix` rule corrects against.
+# One entry per line; lines starting with # are ignored.
+# ORDER MATTERS on ties: earlier entries win when two candidates are equally
+# close. Abbreviations are separate entries on purpose -- "str." is never
+# expanded to "straße", because the short form may be what was written.
+straße
+strasse
+str.
+weg
+allee
+gasse
+platz
+ring
+damm
+ufer
+steig
+pfad
+promenade
+chaussee

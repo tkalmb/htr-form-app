@@ -1,0 +1,8 @@
+# Email domains the `email` rule may snap a recognised domain to.
+# One entry per line; lines starting with # are ignored.
+# Only the domain part of an address is ever corrected; the local part
+# (before the @) has nothing to cross-check against and stays untouched.
+example.com
+example.de
+example.net
+example.org

@@ -1,0 +1,28 @@
+# htr-form-app -- Python dependencies.
+#
+# Pins mirror the environment the thesis evaluation ran in (conda env export,
+# 2026-08, Python 3.12). torch/torchvision came from the cu128 wheel index;
+# installing them via plain pip may pick a different CUDA build, so install
+# torch first from the matching index (see README), then the rest:
+#
+#     pip install -r requirements.txt
+#
+# streamlit is the one package the evaluation environment did not contain;
+# pin it to the version you install:  pip freeze | grep -i streamlit
+
+streamlit                     # pin after installing (see above)
+
+transformers==5.8.0
+torch==2.10.0                 # evaluated build: 2.10.0+cu128
+torchvision==0.25.0           # evaluated build: 0.25.0+cu128
+accelerate==1.13.0
+chandra-ocr==0.2.0
+qwen-vl-utils==0.0.8
+pandas==3.0.1
+numpy==2.3.5
+opencv-python==4.13.0.92
+pillow==10.4.0
+matplotlib==3.10.8
+rapidfuzz==3.14.5
+pymupdf==1.24.14
+pyyaml==6.0.2

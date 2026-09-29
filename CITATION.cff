@@ -1,0 +1,13 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "htr-form-app: Handwritten Text Recognition for German Administrative Forms"
+type: software
+authors:
+  - family-names: "Kalmbach"
+    given-names: "Tobias"
+year: 2026
+notes: >
+  Practical artifact of a master's thesis comparing a fine-tuned TrOCR
+  pipeline with zero-shot vision-language models for handwritten form
+  extraction under on-premise constraints. Update this file with the thesis
+  title and, once available, the publication reference.
